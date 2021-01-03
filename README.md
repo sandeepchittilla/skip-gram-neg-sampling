@@ -29,7 +29,13 @@ where t is the targeted word, c the context word, and n ∈ N the sample of nega
 
 The input to the network is the target word and the output is probabilities for all words to be in the target word's context words.
 
-The forward propogation is relatively simple operation and we perform this along with computing partial differentials for the back propagation in ```trainWord``` function of the SkipGram class.
+The ```trainWord``` function of the ```SkipGram``` class does :
+- calculates the softmax output and updates the weights matrix, ```W```
+- computes partial differentials required for back propagation
+- performs Gradient Descent with ```alpha=0.01```
+- calculates new loss function value
+
+After training for one epoch (stopped due to computational limitations running on CPU) we save the weights matrix to disk.
 
 ### Similarity Scores
 
